@@ -35,6 +35,6 @@ ERP (MySQL) → Sync Engine → CRM Endpoint (Simulated)
 ```bash
 curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/syncbridge/main/docker-compose.yml | docker compose -f - up -d
 
-### windows powershell
+#### windows powershell
 
 iwr https://raw.githubusercontent.com/YOUR_USERNAME/syncbridge/main/docker-compose.yml -OutFile docker-compose.yml; docker compose up -d
