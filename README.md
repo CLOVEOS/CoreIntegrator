@@ -8,7 +8,7 @@ It demonstrates real-world enterprise integration patterns including incremental
 
 ---
 
-# 🏗 Architecture Overview
+#  Architecture Overview
 
 ```
 ERP (MySQL Container)
@@ -29,7 +29,7 @@ Audit Logs (sync_logs table)
 
 ---
 
-# ⚙️ Key Features
+#  Key Features
 
 * Incremental sync (only unsynced records processed)
 * Batch processing
@@ -43,7 +43,7 @@ Audit Logs (sync_logs table)
 
 ---
 
-# 🚀 Quick Start
+#  Quick Start
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ Audit Logs (sync_logs table)
 
 ---
 
-## 🔹 Start System (Recommended Method)
+##  Start System (Recommended Method)
 
 ```bash
 curl -O https://raw.githubusercontent.com/CLOVEOS/CoreIntegrator/main/docker-compose.yml
@@ -72,7 +72,7 @@ Expected containers:
 
 ---
 
-# 🩺 Health Check
+#  Health Check
 
 ```bash
 curl http://localhost:3000/health
@@ -86,7 +86,7 @@ Expected response:
 
 ---
 
-# 🗄 Access ERP Database (Simulate User Adding Data)
+#  Access ERP Database (Simulate User Adding Data)
 
 Enter MySQL container:
 
@@ -111,7 +111,7 @@ This simulates a new ERP customer entry.
 
 ---
 
-# 🔁 Trigger Manual Sync
+#  Trigger Manual Sync
 
 ```bash
 curl -X POST http://localhost:3000/sync
@@ -127,7 +127,7 @@ What happens internally:
 
 ---
 
-# 📊 View Sync Logs
+#  View Sync Logs
 
 ```bash
 curl http://localhost:3000/logs
@@ -141,7 +141,7 @@ Shows:
 
 ---
 
-# ⏱ Automatic Sync (Cron)
+#  Automatic Sync (Cron)
 
 The service runs automatic sync every minute.
 
@@ -159,7 +159,7 @@ Auto-sync triggered
 
 ---
 
-# 🔄 Full Reset & Fresh Deployment (For Demo)
+#  Full Reset & Fresh Deployment (For Demo)
 
 To completely reset everything and redeploy:
 
@@ -181,31 +181,6 @@ This will:
 
 ---
 
-# 🧠 Enterprise Concepts Demonstrated
 
-* ERP as source of truth
-* Middleware-based system integration
-* Idempotent synchronization
-* Retry with backoff strategy
-* ACID transaction guarantees
-* Observability via structured logs
-* Infrastructure-as-Code using Docker Compose
-* Service health monitoring
-* Automated scheduled execution
 
----
 
-# 🎯 Interview Summary
-
-This project simulates a production-style ERP-to-CRM integration middleware.
-
-It demonstrates:
-
-* Containerized microservice deployment
-* Database transaction safety
-* Failure handling with retries
-* Incremental synchronization
-* Automated scheduling
-* Logging and audit trail
-
-The system can be deployed on any machine with Docker installed by pulling the compose file and running `docker compose up`.
