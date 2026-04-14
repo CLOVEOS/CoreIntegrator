@@ -11,7 +11,7 @@ const MAX_RETRIES = 3;
 const BATCH_SIZE = 2;
 const RETRY_DELAY = 500;
 
-/* ---------- WAIT FOR DATABASE ---------- */
+
 async function waitForDB() {
     let connected = false;
     while (!connected) {
@@ -26,7 +26,7 @@ async function waitForDB() {
     }
 }
 
-/* ---------- FETCH UNSYNCED ---------- */
+
 async function getErpCustomers() {
     const [rows] = await pool.query(
         "SELECT * FROM erp_customers WHERE synced = FALSE"
@@ -34,7 +34,7 @@ async function getErpCustomers() {
     return rows;
 }
 
-/* ---------- BATCH ---------- */
+
 function chunkArray(array, size) {
     const result = [];
     for (let i = 0; i < array.length; i += size) {
@@ -43,7 +43,7 @@ function chunkArray(array, size) {
     return result;
 }
 
-/* ---------- PROCESS WITH RETRY + TX ---------- */
+
 async function processWithRetry(data, erpId) {
     let attempts = 0;
 
@@ -93,7 +93,7 @@ async function processWithRetry(data, erpId) {
     }
 }
 
-/* ---------- CORE SYNC ---------- */
+
 async function runSync() {
     console.log("Starting sync...");
 
@@ -119,7 +119,7 @@ async function runSync() {
     console.log("Sync completed.");
 }
 
-/* ---------- ROUTES ---------- */
+
 app.post("/sync", async (req, res) => {
     try {
         await runSync();
@@ -145,7 +145,7 @@ app.get("/health", async (req, res) => {
     }
 });
 
-/* ---------- SCHEDULER ---------- */
+
 cron.schedule("*/1 * * * *", async () => {
     try {
         console.log("Auto-sync triggered");
@@ -155,7 +155,7 @@ cron.schedule("*/1 * * * *", async () => {
     }
 });
 
-/* ---------- STARTUP ---------- */
+
 (async () => {
     await waitForDB();
     await initializeDatabase();
